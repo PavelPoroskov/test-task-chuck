@@ -28,9 +28,7 @@ module.exports = (webpackEnv, options) => {
     return acc;
   }, {});
 
-  //const publicPath = '/'; // live reload work, not Regenerator error
-  //const publicPath = './'; 
-  const publicPath = '.'; 
+  const publicPath = isEnvDevelopment ? '/' : '.'; 
 
   // Some apps do not use client-side routing with pushState.
   // For these, "homepage" can be set to "." to enable relative asset paths.
@@ -108,7 +106,8 @@ module.exports = (webpackEnv, options) => {
       extensions: ['.js', '.jsx'],
     },
     plugins: [
-      new CleanWebpackPlugin(),
+      isEnvProduction
+      && new CleanWebpackPlugin(),
       new HtmlWebpackPlugin(
         Object.assign(
           {},
@@ -137,8 +136,7 @@ module.exports = (webpackEnv, options) => {
 
       new webpack.DefinePlugin(envKeys),
 
-      isEnvProduction
-      && new MiniCssExtractPlugin({
+      new MiniCssExtractPlugin({
         filename: 'static/css/[name].[contenthash:8].css',
         chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
       }),
