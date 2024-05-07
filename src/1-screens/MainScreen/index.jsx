@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
-import { getJoke } from '5-store/modules/jokeGet';
-import { MainScreenView } from '6-views/MainScreenView'
+import { getJoke } from '@/5-store/modules/jokeGet';
+import { MainScreenView } from '@/6-views/MainScreenView'
 
 const mapStateToProps = ({ jokeList }) => ({
   jokeList

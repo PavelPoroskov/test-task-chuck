@@ -4,7 +4,7 @@ import createSagaMiddleware from 'redux-saga'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
-import {apiChuck} from '8-remote/apiChuck';
+import {apiChuck} from '@/8-remote/apiChuck';
 
 import { rootReducer } from './reducers'
 import { rootSaga } from './sagas'
